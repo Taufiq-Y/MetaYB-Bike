@@ -83,9 +83,10 @@ export default function RecordTable(data) {
                       value == "Completed" || row?.status == "Completed"
                     }
                   >
+                    <MenuItem value="Not started yet">Not yet started</MenuItem>
+                    <MenuItem value="Paused">Paused</MenuItem>
                     <MenuItem value="Inprogress">Inprogress</MenuItem>
                     <MenuItem value="Completed">Completed</MenuItem>
-                    <MenuItem value="Not started yet">Not yet started</MenuItem>
                   </Select>
                 </FormControl>
               </TableCell>
