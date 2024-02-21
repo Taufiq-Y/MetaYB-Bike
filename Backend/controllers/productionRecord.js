@@ -88,9 +88,13 @@ const getAllRecords = async (req, res) => {
     let productionRecords;
 
     if (fromDate && toDate) {
-      const formattedFromDate = moment(fromDate, 'YYYY-MM-DD').startOf('day').toDate();
-      const formattedToDate = moment(toDate, 'YYYY-MM-DD').endOf('day').toDate();
-  
+      const formattedFromDate = moment(fromDate, "YYYY-MM-DD")
+        .startOf("day")
+        .toDate();
+      const formattedToDate = moment(toDate, "YYYY-MM-DD")
+        .endOf("day")
+        .toDate();
+
       matchStage = {
         updatedAt: {
           $gte: formattedFromDate,
@@ -98,24 +102,20 @@ const getAllRecords = async (req, res) => {
         },
         status: "Completed",
       };
-      console.log('matchStage---->::: ', matchStage);
     } else matchStage = { status: "Completed" };
     const groupStage = {
       _id: "$bikeId",
       count: { $sum: 1 },
     };
-    console.log('groupStage::: ', groupStage);
     const aggregatedData = await Production.aggregate([
       { $match: matchStage },
       { $group: groupStage },
     ]);
-    console.log('aggregatedData::: ', aggregatedData);
     productionRecords = await Production.populate(aggregatedData, {
       path: "_id",
       select: "name",
       model: "Bike",
     });
-    console.log('aggregatedData::: ', productionRecords);
 
     res.status(200).json({ success: true, data: productionRecords });
   } catch (err) {
@@ -125,9 +125,13 @@ const getAllRecords = async (req, res) => {
 
 const updateStatusBike = async (req, res) => {
   try {
-    const {  _id, status,  assemblyTime, userId } = req.body;
+    const { _id, status, assemblyTime, userId } = req.body;
 
-    const updatedDocument = await Production.findByIdAndUpdate(_id, { status, assemblyTime }, { new: true });
+    const updatedDocument = await Production.findByIdAndUpdate(
+      _id,
+      { status, assemblyTime },
+      { new: true }
+    );
 
     if (!updatedDocument) {
       return res.status(404).json({ message: "Document not found" });
@@ -139,7 +143,9 @@ const updateStatusBike = async (req, res) => {
     // res.status(200).json({ success: true, data: empBikelist });
     // console.log('updatedDocument:', updatedDocument);
 
-    return res.status(200).json({ message: "Status updated successfully", empBikelist });
+    return res
+      .status(200)
+      .json({ message: "Status updated successfully", empBikelist });
   } catch (err) {
     // console.log(err);
     return res.status(500).json({ message: err.message });
@@ -148,23 +154,22 @@ const updateStatusBike = async (req, res) => {
 
 const getDatabyId = async (req, res) => {
   try {
-    const { userId } = req.body
-    const  bikeRecord = await Production.find({employeeId: userId});
-    console.log('bikeRecord::: ', bikeRecord);
-    return res.status(200).json({ message: "Retrived All Bikes successfully",  bikeRecord});
+    const { userId } = req.body;
+    const bikeRecord = await Production.find({ employeeId: userId });
+    console.log("bikeRecord::: ", bikeRecord);
+    return res
+      .status(200)
+      .json({ message: "Retrived All Bikes successfully", bikeRecord });
   } catch (error) {
-    console.log('error::: ', error);
+    console.log("error::: ", error);
     return res.status(500).json({ message: err.message });
   }
-}
-
-
-
+};
 
 export default {
   selectBike,
   getRecords,
   getAllRecords,
   updateStatusBike,
-  getDatabyId
+  getDatabyId,
 };

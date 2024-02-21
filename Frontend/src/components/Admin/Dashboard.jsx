@@ -34,7 +34,6 @@ function Dashboard() {
     getEmployees();
     handleDateChange();
 
-    // eslint-disable-next-line
   }, []);
 
   const handleDateChange = async () => {
@@ -43,28 +42,9 @@ function Dashboard() {
       const response = await ApiService.getAllProductionRecords(
         selectedDateRange
       );
-      console.log('selectedDateRange::: ', selectedDateRange);
-      // setEmployeeProduction(response.data);
-      // let data = response.data;
-      // const bikeCountsMap = new Map();
-      // data.forEach((record) => {
-      //   const bikeId = record.bikeId;
-      //   const bikeName = response.bikes.find((bike) => bike._id === bikeId)?.name;
-      //   if (bikeName) {
-      //     bikeCountsMap.set(bikeName, (bikeCountsMap.get(bikeName) || 0) + 1);
-      //   }
-      // });
-
-      // // Convert bike counts Map to an array of objects
-      // const bikeCountsArray = Array.from(bikeCountsMap).map(([bikeName, count]) => ({
-      //   bikeName,
-      //   count,
-      // }));
-      // // console.log(bikeCountsArray,"array");
       setEmployeeProduction(response.data);
       setLoading(false);
     } catch (error) {
-      // Handle error
       toast.error("Failed to fetch Bike production records");
     }
   };
@@ -85,7 +65,6 @@ function Dashboard() {
         }
       });
 
-      // Convert bike counts Map to an array of objects
       const bikeCountsArray = Array.from(bikeCountsMap).map(
         ([name, count]) => ({
           name,
@@ -222,7 +201,6 @@ function Dashboard() {
             </Button>
           </Grid>
         </Grid>
-        {/* Render charts and metrics based on productionData */}
       </Container>
       <div style={{ display: "flex" }}>
         <Chart data={employeeProduction} />

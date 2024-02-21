@@ -11,11 +11,10 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ApiService from "../../ApiService";
+import { useState } from "react";
 
 export default function RecordTable(data) {
-  console.log("data::: ", data);
-
-  const [value, setValue] = React.useState();
+  const [value, setValue] = useState();
 
   const handleChange = async (_id, event, assemblyTime) => {
     const userId = sessionStorage.getItem("userId");
@@ -28,27 +27,19 @@ export default function RecordTable(data) {
         assemblyTime,
         userId
       );
-      console.log("updateStat::: ", updateStat);
       data.setRecords({ success: true, data: updateStat.empBikelist });
       setValue(status);
-    } catch (error) {
-      console.log("error::: ", error);
-    }
+    } catch (error) {}
   };
 
   const updateStage = async () => {
     try {
       const userId = sessionStorage.getItem("userId");
-      console.log("userId::: ", userId);
       const data = await ApiService.getBikesById(userId);
-      console.log("data111::: ", data);
 
       const statuses = data?.bikeRecord?.map((record) => record.status);
-      console.log("statuses:::", statuses);
       setValue(statuses);
-    } catch (error) {
-      console.log("error::: ", error);
-    }
+    } catch (error) {}
   };
 
   return (

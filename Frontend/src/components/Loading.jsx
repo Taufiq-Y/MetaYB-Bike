@@ -7,9 +7,9 @@ const Loading = () => {
     <>
      <Box sx={{
         display: 'flex',
-        justifyContent: 'center', // Center horizontally
-        alignItems: 'center', // Center vertically
-        height: '100vh', // Take up the full height of the viewport
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh', 
       }}>
       <CircularProgress />
     </Box>

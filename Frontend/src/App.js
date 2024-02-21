@@ -1,13 +1,8 @@
-import './App.css';
-import Routing from "./routes"
+import "./App.css";
+import Routing from "./routes";
 
 function App() {
-  return (
-    <>
-   {Routing}
-     
-    </>
-  );
+  return <>{Routing}</>;
 }
 
 export default App;
