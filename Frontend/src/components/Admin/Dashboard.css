@@ -1,0 +1,35 @@
+.header {
+    margin-left: 8%;
+    margin-top: 2%;
+    display: flex;
+    gap: 225px;
+    font-weight: bold;
+  }
+  
+  .bikes-text {
+    margin-left: 10px;
+    color: grey;
+  }
+  
+  .production-text {
+    color: grey;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .button-container {
+    margin-left: 29%;
+  }
+  
+  .charts-container {
+    display: flex;
+  }
+  
+  .placeholder-text {
+    margin-left: 250px;
+    opacity: 0.5;
+    margin-top: 150px;
+  }
+  
