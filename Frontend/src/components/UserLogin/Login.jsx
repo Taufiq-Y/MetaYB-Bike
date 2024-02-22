@@ -80,6 +80,25 @@ export default function Login() {
       </Button>
       </form>
     </Paper>
+    <p>Login Credentials..</p> <br />
+    <b><span>Admin</span></b> <br />
+    <span>User: admin</span> <br />
+    <span>Password: admin123</span> <br />
+    <b><span>Employee 1</span></b> <br />
+    <span>User: ubayy</span> <br />
+    <span>Password: ubayy123</span> <br />
+    <b><span>Employee 2</span></b> <br />
+    <span>User: ahyaan</span> <br />
+    <span>Password: ahyaan123</span> <br />
+    <b><span>Employee 3</span></b> <br />
+    <span>User: abubackr</span> <br />
+    <span>Password: abubackr123</span> <br />
+    <b><span>Employee 4</span></b> <br />
+    <span>User: taufiq</span> <br />
+    <span>Password: taufiq123</span> <br />
+    <b><span>Employee 5</span></b> <br />
+    <span>User: sathesh</span> <br />
+    <span>Password: sathesh123</span> <br />
   </Container>
   </>
   )
